@@ -5,9 +5,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '@app/shared';
 import { CoreModule } from '@app/core';
 
-import { AppComponent } from './app.component';
+import { PagesComponent } from './pages.component';
 
-describe('AppComponent', () => {
+describe('PagesComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
@@ -17,13 +17,13 @@ describe('AppComponent', () => {
           SharedModule,
           CoreModule
         ],
-        declarations: [AppComponent]
+        declarations: [PagesComponent]
       }).compileComponents();
     })
   );
 
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should create component', async(() => {
+    const fixture = TestBed.createComponent(PagesComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));

@@ -1,0 +1,19 @@
+<mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="consents">
+        <mat-header-cell *matHeaderCellDef>Consent given for</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.consents}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator [pageSize]="2" [pageSizeOptions]="[2, 5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>

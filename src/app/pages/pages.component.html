@@ -1,0 +1,18 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="{{isMobileView ? 'over' : 'side'}}" opened="{{!isMobileView}}" disableClose="{{!isMobileView}}">
+    <div class="branding">
+      <span>DI Chelange</span>
+    </div>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let item of navigationSideMenu" [routerLink]="[item.link]" routerLinkActive="active">
+        {{item.label}}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content" [@routerTransition]="o.isActivated && o.activatedRoute.routeConfig.path">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

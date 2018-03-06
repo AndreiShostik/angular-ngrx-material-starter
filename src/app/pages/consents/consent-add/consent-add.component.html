@@ -1,0 +1,43 @@
+<form [formGroup]="consentForm" (ngSubmit)="addConsent()" novalidate>
+    <mat-form-field class="example-full-width">
+        <input matInput #name placeholder="Name" formControlName="name">
+        <mat-hint align="start">
+            <strong>You name it...</strong>
+        </mat-hint>
+        <mat-hint align="end">{{name.value.length}} / {{maxLength}}</mat-hint>
+        <mat-error *ngIf="consentForm.get('name').hasError('required')">
+            Name is
+            <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Email address" formControlName="email">
+        <mat-error *ngIf="consentForm.get('email').hasError('email') && !consentForm.get('email').hasError('required')">
+            Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="consentForm.get('email').hasError('required')">
+            Email is
+            <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <div>I agree to:</div>
+
+    <!-- <section *ngFor="let consent of consentForm.get('consents').controls; let i = index">
+        <mat-checkbox (change)="onChange($event)" [value]="consent.value">
+            {{consentsMap[consent.value]}}
+        </mat-checkbox>
+    </section> -->
+
+    <section>
+        <mat-checkbox #newsletter formControlName="newsletter">Receive newsletter</mat-checkbox>
+    </section>
+    <section>
+        <mat-checkbox #targetedAds formControlName="targetedAds">Be shown targeted ads</mat-checkbox>
+    </section>
+    <section>
+        <mat-checkbox #anonymousStatistics formControlName="anonymousStatistics">Contribute to anonymous visit statistics</mat-checkbox>
+    </section>
+
+    <button mat-raised-button color="primary" [disabled]="!(newsletter.checked || targetedAds.checked || anonymousStatistics.checked)">Give consent</button>
+</form>
